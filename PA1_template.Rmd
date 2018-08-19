@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Loading and preprocessing the data
 
-1. Load the data (i.e. \color{red}{\verb|read.csv()|}read.csv())
+1. Load the data
 ```{r, echo=TRUE}
 unzip("./activity.zip")
 activity <- read.csv("activity.csv")
@@ -61,9 +61,6 @@ interval.activity <- group_by(activity, interval)
 interval.stats<- summarise(interval.activity, mean.steps = mean(steps, na.rm = TRUE))
 ```
 
-```{r, echo=TRUE, message=FALSE}
-library(plotly)
-```
 
 ```{r, echo=TRUE}
 plot4 <- ggplot(interval.stats, aes(interval, mean.steps)) + geom_line() + 
@@ -72,7 +69,6 @@ plot4 <- ggplot(interval.stats, aes(interval, mean.steps)) + geom_line() +
         theme(plot.title = element_text(size = 12, hjust = 0.5),
               axis.text.x = element_text(angle = 0, size = 10, hjust = 1),
               axis.text.y = element_text(angle = 2, size = 10, hjust = 1))
-plot4 <- ggplotly(plot4)
 plot4
 ```
 
@@ -163,7 +159,6 @@ axis.text.x = element_text(size = 12, hjust = 0),
 axis.text.y = element_text(size = 12, hjust = 0),
 legend.position = "none")
 
-plot6 <- ggplotly(plot6)
 plot6
 
 ```
